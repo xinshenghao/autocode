@@ -20,6 +20,7 @@
     <module>autocode-config</module>
     <module>autocode-server</module>
     <module>autocode-server-client</module>
+    <module>autocode-general</module>
   </modules>
   <dependencies>
   	<!-- Spring se -->
@@ -56,4 +57,19 @@
 	        <version>1.1.41</version>
 	    </dependency>
   </dependencies>
+  <build>
+  	<plugins>
+  		<plugin>
+  			<groupId>org.apache.maven.plugins</groupId>
+  			<artifactId>maven-compiler-plugin</artifactId>
+  			<version>3.6.1</version>
+  			<configuration>
+  				<source>1.8</source>
+  				<target>1.8</target>
+  				<testSource>1.8</testSource>
+  				<testTarget>1.8</testTarget>
+  			</configuration>
+  		</plugin>
+  	</plugins>
+  </build>
 </project>

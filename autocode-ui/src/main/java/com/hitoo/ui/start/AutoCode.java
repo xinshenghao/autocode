@@ -27,6 +27,7 @@ import com.hitoo.config.common.CommonParameter;
 import com.hitoo.config.mbgconfig.MBGConfig;
 import com.hitoo.config.model.DBConnection;
 import com.hitoo.config.model.TableConfig;
+import com.hitoo.ui.codecreatmenu.service.CreateServiceCodeAction;
 import com.hitoo.ui.codemanager.privatecode.PrivateCodeManagerAction;
 import com.hitoo.ui.codemanager.search.SearchCodeAction;
 import com.hitoo.ui.codemanager.uploadcode.UploadCodeAction;
@@ -200,7 +201,21 @@ public class AutoCode extends ApplicationWindow {
 		//公共代码管理
 		MenuManager codeManagerMenu = createCodeManagerMenu();
 		menuManager.add(codeManagerMenu);
+		//其他层代码生成
+		MenuManager createCodeMangerMenu = createMenu();
+		menuManager.add(createCodeMangerMenu);
+		
+		
 		return menuManager;
+	}
+	private MenuManager createMenu() {
+		MenuManager createCodeMangerMenu = new MenuManager("业务代码生成");
+		
+		//生成Service层代码
+		CreateServiceCodeAction createServiceCodeAction = new CreateServiceCodeAction();
+		createCodeMangerMenu.add(createServiceCodeAction);
+		//生成Controller层代码
+		return createCodeMangerMenu;
 	}
 	/**
 	 * 公共代码管理菜单项

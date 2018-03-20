@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.hitoo.general.folderscanner.FolderScanner;
 import com.hitoo.ui.projecttree.model.FileNode;
 import com.hitoo.ui.projecttree.model.FolderNode;
 import com.hitoo.ui.projecttree.model.ProjectTreeElement;
@@ -140,12 +141,6 @@ public class TreeViewDataHelper {
 			}
 		}
 		return true;
-	}
-	
-	public static void main(String[] args) {
-		String path = "/home/xsh/autoCode/";
-		TreeViewDataHelper helper = new TreeViewDataHelper();
-		FolderNode root = helper.getFileTreeData(path, null, true);
 	}
 	
 	

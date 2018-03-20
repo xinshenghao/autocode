@@ -17,6 +17,11 @@
 	<dependencies>
 		<dependency>
 			<groupId>hitoo.software</groupId>
+			<artifactId>autocode-general</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>hitoo.software</groupId>
 			<artifactId>autocode-config</artifactId>
 			<version>${project.version}</version>
 		</dependency>
