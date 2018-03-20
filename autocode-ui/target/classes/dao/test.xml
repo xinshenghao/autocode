@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+"http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration >
+<context id="common" defaultModelType="flat" targetRuntime="MyBatis3" >
+<property name="autoDelimitKeywords" value="false" />
+<property name="javaFileEncoding" value="UTF-8" />
+<property name="beginningDelimiter" value="`" />
+<property name="endingDelimiter" value="`" />
+<javaModelGenerator targetPackage="mybatis.domain" targetProject="tmp" >
+<property name="enableSubPackages" value="true" />
+<property name="trimStrings" value="true" />
+</javaModelGenerator>
+<sqlMapGenerator targetPackage="mapping" targetProject="tmp" >
+<property name="enableSubPackages" value="true" />
+</sqlMapGenerator>
+<javaClientGenerator targetPackage="mybatis.idao" type="flat" targetProject="tmp" >
+<property name="enableSubPackages" value="true" />
+</javaClientGenerator>
+</context>
+</generatorConfiguration>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root> 
+  <!--工作区域的选择,可存在多个-->  
+  <workspace> 
+    <!--工作区域位置-->  
+    <address>/home/xsh/autoCode</address>  
+    <address>/home/xsh/autoCode2</address> 
+  </workspace>  
+  <!-- 数据库连接信息 -->  
+  <dbconnections> 
+    <dbconnection> 
+      <select>true</select>  
+      <type>mysql</type>  
+      <connectionName>localhost</connectionName>  
+      <hostName>localhost</hostName>  
+      <port>3306</port>  
+      <userName>root</userName>  
+      <password>root</password> 
+    </dbconnection> 
+  </dbconnections>  
+  <!-- MBG配置文件信息 -->  
+  <mbgconfigs> 
+    <mbgconfig> 
+      <path>generatorConfig-common.xml</path>  
+      <select>true</select>  
+      <candelete>false</candelete> 
+    </mbgconfig>  
+    <mbgconfig> 
+      <path>test.xml</path>  
+      <select>false</select>  
+      <candelete>true</candelete> 
+    </mbgconfig> 
+  </mbgconfigs>  
+  <!-- MBG表格生成配置 -->  
+  <mbgtables> 
+    <mbgtable> 
+      <name>默认</name>  
+      <select>true</select>  
+      <enableInsert>true</enableInsert>  
+      <enableCountByExample>true</enableCountByExample>  
+      <enableDeleteByExample>true</enableDeleteByExample>  
+      <enableDeleteByPrimaryKey>true</enableDeleteByPrimaryKey>  
+      <enableUpdateByExample>true</enableUpdateByExample>  
+      <enableUpdateByPrimaryKey>true</enableUpdateByPrimaryKey>  
+      <enableSelectByExample>true</enableSelectByExample>  
+      <enableSelectByPrimaryKey>true</enableSelectByPrimaryKey> 
+    </mbgtable>  
+    <mbgtable> 
+      <name>测试</name>  
+      <select>false</select>  
+      <enableInsert>true</enableInsert>  
+      <enableCountByExample>true</enableCountByExample>  
+      <enableDeleteByExample>false</enableDeleteByExample>  
+      <enableDeleteByPrimaryKey>true</enableDeleteByPrimaryKey>  
+      <enableUpdateByExample>false</enableUpdateByExample>  
+      <enableUpdateByPrimaryKey>false</enableUpdateByPrimaryKey>  
+      <enableSelectByExample>true</enableSelectByExample>  
+      <enableSelectByPrimaryKey>false</enableSelectByPrimaryKey> 
+    </mbgtable> 
+  </mbgtables> 
+</root>

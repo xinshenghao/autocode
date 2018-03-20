@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="9255" started-at="2018-03-16T10:26:19Z" finished-at="2018-03-16T10:26:28Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="9255" started-at="2018-03-16T10:26:19Z" finished-at="2018-03-16T10:26:28Z">
+      <class name="com.java.service.PublicMethodCodeServiceTest">
+        <test-method status="PASS" signature="unitilsBeforeClass()[pri:0, instance:com.java.service.PublicMethodCodeServiceTest@1f7030a6]" name="unitilsBeforeClass" is-config="true" duration-ms="247" started-at="2018-03-16T10:26:19Z" finished-at="2018-03-16T10:26:19Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- unitilsBeforeClass -->
+        <test-method status="PASS" signature="init()[pri:0, instance:com.java.service.PublicMethodCodeServiceTest@1f7030a6]" name="init" is-config="true" duration-ms="1" started-at="2018-03-16T10:26:19Z" finished-at="2018-03-16T10:26:19Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- init -->
+        <test-method status="PASS" signature="unitilsBeforeTestSetUp(java.lang.reflect.Method)[pri:0, instance:com.java.service.PublicMethodCodeServiceTest@1f7030a6]" name="unitilsBeforeTestSetUp" is-config="true" duration-ms="2803" started-at="2018-03-16T10:26:19Z" finished-at="2018-03-16T10:26:22Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.java.service.PublicMethodCodeServiceTest.search()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- unitilsBeforeTestSetUp -->
+        <test-method status="PASS" signature="search()[pri:0, instance:com.java.service.PublicMethodCodeServiceTest@1f7030a6]" name="search" duration-ms="6154" started-at="2018-03-16T10:26:22Z" finished-at="2018-03-16T10:26:28Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- search -->
+        <test-method status="PASS" signature="unitilsAfterTestTearDown(java.lang.reflect.Method)[pri:0, instance:com.java.service.PublicMethodCodeServiceTest@1f7030a6]" name="unitilsAfterTestTearDown" is-config="true" duration-ms="4" started-at="2018-03-16T10:26:28Z" finished-at="2018-03-16T10:26:28Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.java.service.PublicMethodCodeServiceTest.search()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- unitilsAfterTestTearDown -->
+      </class> <!-- com.java.service.PublicMethodCodeServiceTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
