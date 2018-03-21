@@ -25,11 +25,6 @@
       <path>generatorConfig-common.xml</path>  
       <select>true</select>  
       <candelete>false</candelete> 
-    </mbgconfig>  
-    <mbgconfig> 
-      <path>test.xml</path>  
-      <select>false</select>  
-      <candelete>true</candelete> 
     </mbgconfig> 
   </mbgconfigs>  
   <!-- MBG表格生成配置 -->  
@@ -45,18 +40,13 @@
       <enableUpdateByPrimaryKey>true</enableUpdateByPrimaryKey>  
       <enableSelectByExample>true</enableSelectByExample>  
       <enableSelectByPrimaryKey>true</enableSelectByPrimaryKey> 
-    </mbgtable>  
-    <mbgtable> 
-      <name>测试</name>  
-      <select>false</select>  
-      <enableInsert>true</enableInsert>  
-      <enableCountByExample>true</enableCountByExample>  
-      <enableDeleteByExample>false</enableDeleteByExample>  
-      <enableDeleteByPrimaryKey>true</enableDeleteByPrimaryKey>  
-      <enableUpdateByExample>false</enableUpdateByExample>  
-      <enableUpdateByPrimaryKey>false</enableUpdateByPrimaryKey>  
-      <enableSelectByExample>true</enableSelectByExample>  
-      <enableSelectByPrimaryKey>false</enableSelectByPrimaryKey> 
     </mbgtable> 
-  </mbgtables> 
+  </mbgtables>  
+  <service_templates> 
+    <template> 
+      <name>基础模板</name>  
+      <select>true</select>  
+      <path>base.vm</path> 
+    </template> 
+  </service_templates> 
 </root>

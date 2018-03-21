@@ -1,6 +1,8 @@
 package com.hitoo.ui.codecreatmenu.service;
 
 import org.eclipse.jface.action.Action;
+import org.eclipse.jface.wizard.WizardDialog;
+import org.eclipse.swt.widgets.Display;
 
 public class CreateServiceCodeAction extends Action{
 
@@ -10,6 +12,8 @@ public class CreateServiceCodeAction extends Action{
 	
 	@Override
 	public void run() {
-		System.out.println("sdfdsfasd");
+		WizardDialog dialog = new WizardDialog(Display.getDefault().getActiveShell(), new CreateServiceCodeWizard());
+		dialog.setPageSize(250, 300);
+		dialog.open();
 	}
 }

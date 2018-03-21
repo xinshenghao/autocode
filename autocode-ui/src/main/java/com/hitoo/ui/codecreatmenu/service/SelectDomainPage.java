@@ -1,18 +1,23 @@
 package com.hitoo.ui.codecreatmenu.service;
 
+import org.eclipse.jface.viewers.CheckboxTableViewer;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.List;
+import org.eclipse.swt.widgets.TableColumn;
 
 import com.hitoo.general.folderscanner.FolderScanner;
 import com.hitoo.general.folderscanner.rule.NoEndWithRule;
-
-import org.eclipse.swt.layout.FillLayout;
+import com.hitoo.ui.table.SimpleTableLabelProvider;
+import com.hitoo.ui.table.SimpleTableNameContentProvider;
 
 public class SelectDomainPage extends WizardPage {
 	private FolderScanner scanner;
-	private List list;
+	
+	private CheckboxTableViewer checkboxTableViewer = null;
+	private static String[] COLUMN_NAME = {"实体名"};
 	/**
 	 * Create the wizard.
 	 */
@@ -34,9 +39,24 @@ public class SelectDomainPage extends WizardPage {
 		setControl(container);
 		container.setLayout(new FillLayout(SWT.HORIZONTAL));
 		
-		list = new org.eclipse.swt.widgets.List(container, SWT.BORDER);
-		
-		initView();
+		checkboxTableViewer = CheckboxTableViewer.newCheckList(container, SWT.BORDER | SWT.FULL_SELECTION);
+		//设置表头
+		for(int i=0; i<COLUMN_NAME.length; i++) {
+			new TableColumn(checkboxTableViewer.getTable(), SWT.LEFT).setText(COLUMN_NAME[i]);
+			checkboxTableViewer.getTable().getColumn(i).pack();
+		}
+		//设置表头可见
+		checkboxTableViewer.getTable().setHeaderVisible(true);
+		//设置表格线可见
+		checkboxTableViewer.getTable().setLinesVisible(true);
+		//设置数据
+		checkboxTableViewer.setContentProvider(new SimpleTableNameContentProvider());
+		//设置视图
+		checkboxTableViewer.setLabelProvider(new SimpleTableLabelProvider());
+		//设置表格数据对象
+		checkboxTableViewer.setInput(scanner.scan());
+		//设置全选
+		checkboxTableViewer.setAllChecked(true);
 	}
 
 	private void initView() {
@@ -46,7 +66,15 @@ public class SelectDomainPage extends WizardPage {
 			String tmp = domains.get(i);
 			names[i] = tmp.substring(0, tmp.length()-5);
 		}
-		list.setItems(names);
 	}
-
+	
+	public String[] getSelectedDomains() {
+		Object[] tmp = checkboxTableViewer.getCheckedElements();
+		String[] result = new String[tmp.length];
+		for(int i=0; i< tmp.length; i++) {
+			String s = (String)tmp[i];
+			result[i] = s.substring(0, s.length()-5);
+		}
+		return result;
+	}
 }

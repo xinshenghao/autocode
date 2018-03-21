@@ -44,7 +44,14 @@ public abstract class CommParaKey {
 	public static final String ENABLE_DELETEBYEXAMPLE = "enableDeleteByExample";
 	public static final String ENABLE_COUNTBYEXAMPLE = "enableCountByExample";
 	public static final String ENABLE_UPDATEBYEXAMPLE = "enableUpdateByExample";
-	/****************/
+	/*******Service层代码模板*********/
+	public static final String SERVICE_TEMPLATES = "service_templates";
+	
+	public static final String TEMPLATE_TEMPLATE = "template";
+	public static final String TEMPLATE_NAME = "name";
+	public static final String TEMPLATE_SELECT = "select";
+	public static final String TEMPLATE_PATH = "path";
+
 	/****************/
 	/****************/
 			

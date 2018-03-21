@@ -4,12 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.jface.viewers.CheckboxTableViewer;
-import org.eclipse.jface.viewers.ILabelProviderListener;
-import org.eclipse.jface.viewers.IStructuredContentProvider;
-import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.TableColumn;
@@ -21,6 +17,8 @@ import com.hitoo.config.db.DBHelper;
 import com.hitoo.config.model.DBConnection;
 import com.hitoo.ui.start.ApplicationContextHelper;
 import com.hitoo.ui.start.RuntimeParamter;
+import com.hitoo.ui.table.SimpleTableLabelProvider;
+import com.hitoo.ui.table.SimpleTableNameContentProvider;
 
 public class SelectedTableWizardPage extends WizardPage {
 	
@@ -80,9 +78,9 @@ public class SelectedTableWizardPage extends WizardPage {
 		//设置表格线可见
 		checkboxTableViewer.getTable().setLinesVisible(true);
 		//设置数据
-		checkboxTableViewer.setContentProvider(new TableNameContentProvider());
+		checkboxTableViewer.setContentProvider(new SimpleTableNameContentProvider());
 		//设置视图
-		checkboxTableViewer.setLabelProvider(new TableLabelProvider());
+		checkboxTableViewer.setLabelProvider(new SimpleTableLabelProvider());
 		//设置表格数据对象
 		checkboxTableViewer.setInput(tables);
 		//设置全选
@@ -122,51 +120,4 @@ public class SelectedTableWizardPage extends WizardPage {
 		}
 		return list;
 	}
-}
-
-class TableNameContentProvider implements IStructuredContentProvider{
-
-	@Override
-	public Object[] getElements(Object input) {
-		// TODO Auto-generated method stub
-		return ((List)input).toArray();
-	}
-}
-class TableLabelProvider implements ITableLabelProvider{
-
-	@Override
-	public void addListener(ILabelProviderListener arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void dispose() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public boolean isLabelProperty(Object arg0, String arg1) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void removeListener(ILabelProviderListener arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Image getColumnImage(Object arg0, int arg1) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String getColumnText(Object element, int columnIndex) {
-		return (String) element;
-	}
-	
 }

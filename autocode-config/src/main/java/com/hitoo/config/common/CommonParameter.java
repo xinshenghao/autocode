@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import com.hitoo.config.mbgconfig.MBGConfig;
 import com.hitoo.config.model.DBConnection;
+import com.hitoo.config.model.ServiceTemplate;
 import com.hitoo.config.model.TableConfig;
 import com.hitoo.config.utils.ResourceUtil;
 import com.hitoo.config.utils.XmlUtil;
@@ -27,6 +28,8 @@ public class CommonParameter {
 	private List<MBGConfig> mbgConfigs = null;
 	//mbg Table策略
 	private List<TableConfig> tableConfigs = null;
+	//Service代码生成模板
+	private List<ServiceTemplate> serviceTemplates = null;
 	
 	private XmlUtil xmlUtil = null;
 	
@@ -39,14 +42,35 @@ public class CommonParameter {
 	 * 配置文件转换为Bean
 	 */
 	private void xmlTrains2Bean() {
-		// TODO Auto-generated method stub
 		Element root = xmlUtil.getRootElement();
 		this.workSpace = getDefaultWorkSpace(root); 
 		this.workSpaces = getAllWorkSpaces(root); 
 		this.dbConnections = getDBConnectionList(root);
 		this.mbgConfigs = getMBGConfigs(root);
 		this.tableConfigs = getTableConfigs(root);
+		this.serviceTemplates = getServiceTemplate(root);
 	}
+	/**
+	 * 获取Service层代码生成模板信息
+	 * @param root
+	 * @return
+	 */
+	private List<ServiceTemplate> getServiceTemplate(Element root) {
+		List<ServiceTemplate> result = null;
+		List<Element> serviceTemplates = root.element(CommParaKey.SERVICE_TEMPLATES).elements(CommParaKey.TEMPLATE_TEMPLATE);
+		if( serviceTemplates != null && serviceTemplates.size() != 0 ) {
+			result = new ArrayList<>();
+			for (Element element : serviceTemplates) {
+				ServiceTemplate tmp = new ServiceTemplate();
+				tmp.setName(element.elementText(CommParaKey.TEMPLATE_NAME));
+				tmp.setPath(element.elementText(CommParaKey.TEMPLATE_PATH));
+				tmp.setSelect(Boolean.parseBoolean(element.elementText(CommParaKey.TEMPLATE_SELECT)));
+				result.add(tmp);
+			}
+		}
+		return result;
+	}
+
 	/**
 	 * 获取mbg Tabel实体策略
 	 * @param root
@@ -195,6 +219,15 @@ public class CommonParameter {
 	public void setTableConfigs(List<TableConfig> tableConfigs) {
 		this.tableConfigs = tableConfigs;
 	}
+
+	public List<ServiceTemplate> getServiceTemplates() {
+		return serviceTemplates;
+	}
+
+	public void setServiceTemplates(List<ServiceTemplate> serviceTemplates) {
+		this.serviceTemplates = serviceTemplates;
+	}
+	
 
 	
 	
