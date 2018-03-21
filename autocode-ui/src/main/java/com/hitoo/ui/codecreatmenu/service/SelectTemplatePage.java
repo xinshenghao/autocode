@@ -45,7 +45,16 @@ public class SelectTemplatePage extends WizardPage {
 		
 		Label lblNewLabel = new Label(container, SWT.NONE);
 		lblNewLabel.setText("是否生成接口文件");
-		new Label(container, SWT.NONE);
+		
+		Group group = new Group(container, SWT.NONE);
+		group.setLayout(new RowLayout());
+		
+		Button isCreateInterBtn = new Button(group, SWT.RADIO);
+		isCreateInterBtn.setText("是");
+		
+		Button btnRadioButton_1 = new Button(group, SWT.RADIO);
+		btnRadioButton_1.setText("否");
+		
 		
 		list = new List(container, SWT.SINGLE);
 		GridData data = new GridData(GridData.FILL_BOTH);
