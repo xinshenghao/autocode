@@ -21,6 +21,7 @@
     <module>autocode-server</module>
     <module>autocode-server-client</module>
     <module>autocode-general</module>
+    <module>autocode-frame</module>
   </modules>
   <dependencies>
   	<!-- Spring se -->
