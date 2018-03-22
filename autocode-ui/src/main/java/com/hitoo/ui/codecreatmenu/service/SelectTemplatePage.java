@@ -20,6 +20,7 @@ import org.eclipse.swt.layout.RowLayout;
 public class SelectTemplatePage extends WizardPage {
 	private List list;
 	private java.util.List<ServiceTemplate> templates;
+	private Button isCreateInterBtn;
 	/**
 	 * Create the wizard.
 	 */
@@ -49,7 +50,7 @@ public class SelectTemplatePage extends WizardPage {
 		Group group = new Group(container, SWT.NONE);
 		group.setLayout(new RowLayout());
 		
-		Button isCreateInterBtn = new Button(group, SWT.RADIO);
+		isCreateInterBtn = new Button(group, SWT.RADIO);
 		isCreateInterBtn.setText("是");
 		
 		Button btnRadioButton_1 = new Button(group, SWT.RADIO);
