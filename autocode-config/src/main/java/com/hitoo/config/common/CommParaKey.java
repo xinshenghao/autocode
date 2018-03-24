@@ -52,6 +52,7 @@ public abstract class CommParaKey {
 	public static final String TEMPLATE_SELECT = "select";
 	public static final String TEMPLATE_PATH = "path";
 
+	public static final String CONTROLLER_TEMPLATES = "controller_templates";
 	/****************/
 	/****************/
 			

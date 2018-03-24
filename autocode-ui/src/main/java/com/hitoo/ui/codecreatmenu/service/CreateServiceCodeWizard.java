@@ -4,6 +4,7 @@ import org.eclipse.jface.wizard.Wizard;
 
 import com.hitoo.config.ConfigFilePath;
 import com.hitoo.config.createcode.service.ServiceCodeCreater;
+import com.hitoo.ui.codecreatmenu.SelectDomainPage;
 
 public class CreateServiceCodeWizard extends Wizard {
 	private SelectDomainPage selectDomainPage;

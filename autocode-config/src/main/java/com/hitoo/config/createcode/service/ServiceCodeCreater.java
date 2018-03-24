@@ -21,7 +21,7 @@ public class ServiceCodeCreater extends AbsCodeCreater {
 		//生成实现类文件
 		createImplCode(domains);
 	}
-
+	
 	private void createImplCode(String[] domains) {
 		velocityHelper.setTemplateFilePath(ConfigFilePath.SERVICE_TEMPLATE_PATH+"/impl/"+templateName);
 		for (String domain : domains) {

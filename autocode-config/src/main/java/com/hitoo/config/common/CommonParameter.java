@@ -10,6 +10,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import com.hitoo.config.mbgconfig.MBGConfig;
+import com.hitoo.config.model.ControllerTemplate;
 import com.hitoo.config.model.DBConnection;
 import com.hitoo.config.model.ServiceTemplate;
 import com.hitoo.config.model.TableConfig;
@@ -30,6 +31,8 @@ public class CommonParameter {
 	private List<TableConfig> tableConfigs = null;
 	//Service代码生成模板
 	private List<ServiceTemplate> serviceTemplates = null;
+	//Controller代码生成模板
+	private List<ControllerTemplate> controllerTemplates = null;
 	
 	private XmlUtil xmlUtil = null;
 	
@@ -49,7 +52,33 @@ public class CommonParameter {
 		this.mbgConfigs = getMBGConfigs(root);
 		this.tableConfigs = getTableConfigs(root);
 		this.serviceTemplates = getServiceTemplate(root);
+		this.controllerTemplates = getControllerTemplate(root);
 	}
+	/**
+	 * 获取Controller层代码模板信息
+	 * @param root
+	 * @return
+	 */
+	private List<ControllerTemplate> getControllerTemplate(Element root) {
+		List<ControllerTemplate> result = null;
+		
+		List<Element> controllerTemplates = root.element(CommParaKey.CONTROLLER_TEMPLATES).elements(CommParaKey.TEMPLATE_TEMPLATE);
+		if(controllerTemplates!= null && controllerTemplates.size() != 0) {
+			result = new ArrayList<>();
+			for (Element element : controllerTemplates) {
+				ControllerTemplate tmp = new ControllerTemplate();
+				
+				tmp.setName(element.elementText(CommParaKey.TEMPLATE_NAME));
+				tmp.setPath(element.elementText(CommParaKey.TEMPLATE_PATH));
+				tmp.setSelect(Boolean.parseBoolean(element.elementText(CommParaKey.TEMPLATE_SELECT)));
+				
+				result.add(tmp);
+			}
+		}
+		
+		return result;
+	}
+
 	/**
 	 * 获取Service层代码生成模板信息
 	 * @param root
@@ -226,6 +255,14 @@ public class CommonParameter {
 
 	public void setServiceTemplates(List<ServiceTemplate> serviceTemplates) {
 		this.serviceTemplates = serviceTemplates;
+	}
+
+	public List<ControllerTemplate> getControllerTemplates() {
+		return controllerTemplates;
+	}
+
+	public void setControllerTemplates(List<ControllerTemplate> controllerTemplates) {
+		this.controllerTemplates = controllerTemplates;
 	}
 	
 

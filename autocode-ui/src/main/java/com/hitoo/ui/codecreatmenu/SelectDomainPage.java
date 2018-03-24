@@ -1,4 +1,4 @@
-package com.hitoo.ui.codecreatmenu.service;
+package com.hitoo.ui.codecreatmenu;
 
 import org.eclipse.jface.viewers.CheckboxTableViewer;
 import org.eclipse.jface.wizard.WizardPage;

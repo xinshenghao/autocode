@@ -48,5 +48,12 @@
       <select>true</select>  
       <path>base.vm</path> 
     </template> 
-  </service_templates> 
+  </service_templates>  
+  <controller_templates> 
+    <template> 
+      <name>基础模板</name>  
+      <select>true</select>  
+      <path>base.vm</path> 
+    </template> 
+  </controller_templates> 
 </root>

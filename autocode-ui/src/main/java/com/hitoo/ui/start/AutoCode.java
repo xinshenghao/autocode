@@ -27,6 +27,7 @@ import com.hitoo.config.common.CommonParameter;
 import com.hitoo.config.mbgconfig.MBGConfig;
 import com.hitoo.config.model.DBConnection;
 import com.hitoo.config.model.TableConfig;
+import com.hitoo.ui.codecreatmenu.controller.CreateControllerCodeAction;
 import com.hitoo.ui.codecreatmenu.service.CreateServiceCodeAction;
 import com.hitoo.ui.codemanager.privatecode.PrivateCodeManagerAction;
 import com.hitoo.ui.codemanager.search.SearchCodeAction;
@@ -215,6 +216,8 @@ public class AutoCode extends ApplicationWindow {
 		CreateServiceCodeAction createServiceCodeAction = new CreateServiceCodeAction();
 		createCodeMangerMenu.add(createServiceCodeAction);
 		//生成Controller层代码
+		CreateControllerCodeAction createControllerCodeAction = new CreateControllerCodeAction();
+		createCodeMangerMenu.add(createControllerCodeAction);
 		return createCodeMangerMenu;
 	}
 	/**

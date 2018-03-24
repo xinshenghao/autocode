@@ -12,6 +12,8 @@ public class ConfigFilePath {
 	public static String CLIENT_PARAMTER_FILE_PATH;
 	//Service模板文件位置
 	public static String SERVICE_TEMPLATE_PATH;
+	//Controller模板文件位置
+	public static String CONTROLLER_TEMPLATE_PATH;
 	
 	private static final String UI_PROJECT_PATH = "/home/xsh/git/autocode/autocode-ui/";
 	private static final String PROJ_COMMON_PARAMETER_FILE_PATH = UI_PROJECT_PATH+"src/main/resources/common-parameter.xml";
@@ -19,6 +21,7 @@ public class ConfigFilePath {
 	private static final String PROJ_CLIENT_PARAMTER_FILE_PATH = "classpath:client_paramter.properties";
 	private static final String PROJ_FILEPATH_PROPERTIES_FILE_PATH = "classpath:filePath.properties";
 	private static final String PROJ_SERVICE_TEMPLATE_PATH = "templates/service";
+	private static final String PROJ_CONTROLLER_TEMPLACE_PATH="templates/controller/";
 	
 	
 
@@ -30,6 +33,7 @@ public class ConfigFilePath {
 			FILEPATH_PROPERTIES_FILE_PATH = PROJ_FILEPATH_PROPERTIES_FILE_PATH;
 			CLIENT_PARAMTER_FILE_PATH = PROJ_CLIENT_PARAMTER_FILE_PATH;
 			SERVICE_TEMPLATE_PATH = PROJ_SERVICE_TEMPLATE_PATH;
+			CONTROLLER_TEMPLATE_PATH = PROJ_CONTROLLER_TEMPLACE_PATH;
 		}else {
 			
 		}
