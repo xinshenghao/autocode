@@ -1,5 +1,6 @@
 package com.hitoo.config.createcode;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StringWriter;
@@ -47,14 +48,20 @@ public class VelocityHelper {
 	 * 输出合并数据后的模板文件
 	 * @param filePath
 	 */
-	public void outputMegerFile(String filePath) {
+	public void outputMegerFile(String filePath, String fileName) {
 		if( null == this.templateFilePath) {
 			throw new RuntimeException("请设置模板文件位置");
 		}
+		
+		File file = new File(filePath);
+		if(!file.exists() || file.isDirectory()) {
+			file.mkdirs();
+		}
+		
 		Template template = ve.getTemplate(templateFilePath);
 		FileWriter fw = null;
 		try {
-			fw = new FileWriter(filePath);
+			fw = new FileWriter(filePath+"/"+fileName);
 			template.merge(context, fw);
 		} catch (IOException e) {
 			e.printStackTrace();
