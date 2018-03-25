@@ -11,6 +11,8 @@ import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
 
+import com.hitoo.config.FilePathBean;
+
 public class VelocityHelper {
 	
 	private String templateFilePath = null;
@@ -21,8 +23,8 @@ public class VelocityHelper {
 	
 	public VelocityHelper() {
 		
-		ve.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath");
-		ve.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
+		ve.setProperty("resource.loader", "file");
+		ve.setProperty("file.resource.loader.class", "org.apache.velocity.runtime.resource.loader.FileResourceLoader");
 		ve.init();
 		
 		context = new VelocityContext();

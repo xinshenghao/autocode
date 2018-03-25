@@ -1,4 +1,4 @@
-package com.hitoo.ui.utils;
+package com.hitoo.general.utils;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -6,12 +6,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Properties;
 
-import com.hitoo.config.ConfigFilePath;
-
 public class PropertiesUtil {
-	public final static String JDBC_PATH="../../resource/jdbc.properties";
-	public final static String FILE_PATH= ConfigFilePath.FILEPATH_PROPERTIES_FILE_PATH;
-	public final static String CLIENT_PARAMTER_PATH= ConfigFilePath.CLIENT_PARAMTER_FILE_PATH;
+	//public final static String FILE_PATH= ConfigFilePath.FILEPATH_PROPERTIES_FILE_PATH;
+	//public final static String CLIENT_PARAMTER_PATH= ConfigFilePath.CLIENT_PARAMTER_FILE_PATH;
 	
 	public static String getValue(String path,String key){
 		 Properties p= new Properties();

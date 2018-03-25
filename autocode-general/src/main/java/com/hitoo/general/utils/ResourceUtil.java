@@ -1,4 +1,4 @@
-package com.hitoo.ui.utils;
+package com.hitoo.general.utils;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -7,7 +7,6 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 
-import com.hitoo.config.common.CommParaKey;
 
 public class ResourceUtil {
 	private static ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();

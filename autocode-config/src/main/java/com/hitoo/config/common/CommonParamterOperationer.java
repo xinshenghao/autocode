@@ -13,7 +13,7 @@ import org.dom4j.Element;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.hitoo.config.ConfigFilePath;
+import com.hitoo.config.FilePathBean;
 import com.hitoo.config.mbgconfig.MBGConfig;
 import com.hitoo.config.model.DBConnection;
 import com.hitoo.config.model.TableConfig;
@@ -34,7 +34,7 @@ public class CommonParamterOperationer {
 	private CommonParameter commonParameter = null;
 
 	public CommonParamterOperationer() {
-		xmlUtil = new XmlUtil(CommParaKey.COMMENT_PARAMTER_XML_PATH);
+		xmlUtil = new XmlUtil(FilePathBean.getCommonParameter());
 		root = xmlUtil.getRootElement();
 	}
 	/**
@@ -210,7 +210,8 @@ public class CommonParamterOperationer {
 	public void writeToFile() {
 		OutputStream os = null;
 		try {
-			os = new FileOutputStream(ConfigFilePath.COMMON_PARA_FILE_OUT_PATH);
+			//os = new FileOutputStream(ConfigFilePath.COMMON_PARA_FILE_OUT_PATH);
+			os = new FileOutputStream(FilePathBean.getCommonParameter());
 			xmlUtil.writeXml(os);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();

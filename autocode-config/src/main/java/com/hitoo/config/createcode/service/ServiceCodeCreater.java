@@ -1,6 +1,6 @@
 package com.hitoo.config.createcode.service;
 
-import com.hitoo.config.ConfigFilePath;
+import com.hitoo.config.FilePathBean;
 import com.hitoo.config.createcode.AbsCodeCreater;
 
 public class ServiceCodeCreater extends AbsCodeCreater {
@@ -23,7 +23,7 @@ public class ServiceCodeCreater extends AbsCodeCreater {
 	}
 	
 	private void createImplCode(String[] domains) {
-		velocityHelper.setTemplateFilePath(ConfigFilePath.SERVICE_TEMPLATE_PATH+"/impl/"+templateName);
+		velocityHelper.setTemplateFilePath(FilePathBean.getService_templates()+"/impl/"+templateName);
 		for (String domain : domains) {
 			velocityHelper.addData("name", domain);
 			velocityHelper.outputMegerFile(outputPath+"/impl", domain+"ServiceImpl.java");
@@ -31,7 +31,7 @@ public class ServiceCodeCreater extends AbsCodeCreater {
 	}
 
 	private void createInterfaceCode(String[] domains) {
-		velocityHelper.setTemplateFilePath(ConfigFilePath.SERVICE_TEMPLATE_PATH+"/interface/"+templateName);
+		velocityHelper.setTemplateFilePath(FilePathBean.getService_templates()+"/interface/"+templateName);
 		for (String domain : domains) {
 			velocityHelper.addData("name", domain);
 			velocityHelper.outputMegerFile(outputPath, domain+"Service.java");

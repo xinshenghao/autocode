@@ -14,10 +14,10 @@ import com.hitoo.config.projectinfor.ProjectInfor;
 import com.hitoo.config.projectinfor.ProjectInforBeanOperationer;
 import com.hitoo.config.projectinfor.ProjectInforKey;
 import com.hitoo.config.projectinfor.ProjectInforOperationer;
+import com.hitoo.general.utils.FileUtil;
+import com.hitoo.general.utils.ZipUtil;
 import com.hitoo.ui.start.ApplicationContextHelper;
 import com.hitoo.ui.start.AutoCode;
-import com.hitoo.ui.utils.FileUtil;
-import com.hitoo.ui.utils.ZipUtil;
 /**
  * 创建项目
  * @author xsh

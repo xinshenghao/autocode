@@ -26,19 +26,20 @@ import org.eclipse.swt.widgets.Text;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.hitoo.config.FilePathBean;
+import com.hitoo.general.utils.PropertiesUtil;
+import com.hitoo.general.utils.StringUtil;
 import com.hitoo.server.client.codemanger.busniess.ElasticSearchRequest;
 import com.hitoo.server.client.codemanger.domain.PublicMethod;
 import com.hitoo.server.client.response.AbsResponseBean;
 import com.hitoo.server.client.response.ResponseType;
-import com.hitoo.ui.utils.PropertiesUtil;
-import com.hitoo.ui.utils.StringUtil;
 import com.hitoo.ui.widget.MessageUtil;
 
 import swing2swt.layout.FlowLayout;
 
 public class SearchCodeDialog extends Dialog {
 	
-	private String url = PropertiesUtil.getValue(PropertiesUtil.CLIENT_PARAMTER_PATH, "es.requestURL");
+	private String url = PropertiesUtil.getValue(FilePathBean.getClientParamterFilePath(), "es.requestURL");
 	private ElasticSearchRequest elasticSearchRequest;
 	
 	private Text searchText;

@@ -13,13 +13,14 @@ import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.Wizard;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.hitoo.config.FilePathBean;
+import com.hitoo.general.utils.PropertiesUtil;
 import com.hitoo.server.client.codemanger.busniess.ElasticSearchRequest;
 import com.hitoo.server.client.response.AbsResponseBean;
 import com.hitoo.server.client.response.ResponseType;
 import com.hitoo.ui.start.ApplicationContextHelper;
 import com.hitoo.ui.start.AutoCode;
 import com.hitoo.ui.start.RuntimeParamter;
-import com.hitoo.ui.utils.PropertiesUtil;
 import com.hitoo.ui.widget.MessageUtil;
 
 public class UploadCodeWizard extends Wizard {
@@ -38,7 +39,7 @@ public class UploadCodeWizard extends Wizard {
 	
 	private boolean isAddClassCode = true; //是否是增加类代码
 	
-	String url = PropertiesUtil.getValue(PropertiesUtil.CLIENT_PARAMTER_PATH, "es.requestURL");
+	String url = PropertiesUtil.getValue(FilePathBean.getClientParamterFilePath(), "es.requestURL");
 	private ElasticSearchRequest request = new ElasticSearchRequest(url);
 	
 	private RuntimeParamter runtimeParamter = (RuntimeParamter) ApplicationContextHelper.getBean("runtimeParamter");

@@ -1,4 +1,4 @@
-package com.hitoo.ui.utils;
+package com.hitoo.general.utils;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

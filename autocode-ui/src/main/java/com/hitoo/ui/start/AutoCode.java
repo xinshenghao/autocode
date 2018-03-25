@@ -23,6 +23,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.TabFolder;
 import org.eclipse.swt.widgets.TabItem;
 
+import com.hitoo.config.FilePathBean;
 import com.hitoo.config.common.CommonParameter;
 import com.hitoo.config.mbgconfig.MBGConfig;
 import com.hitoo.config.model.DBConnection;
@@ -46,7 +47,6 @@ import com.hitoo.ui.filemenu.ExportToEclipseWorkSpaceAction;
 import com.hitoo.ui.filemenu.PreferenceAction;
 import com.hitoo.ui.filemenu.createproject.CreateEclipseProjectAction;
 import com.hitoo.ui.projecttree.ProjectTreeViewComposite;
-import com.hitoo.ui.utils.PropertiesUtil;
 
 import swing2swt.layout.BorderLayout;
 /**
@@ -67,7 +67,7 @@ public class AutoCode extends ApplicationWindow {
  	
  	//图片资源
  	private ImageRegistry imageRegistry = new ImageRegistry();
- 	private String imagePath = PropertiesUtil.getValue(PropertiesUtil.FILE_PATH, "imgsFolder");
+ 	private String imagePath = FilePathBean.getImgsFolder();
  	private static final String IMG_PROJECT = "project";
  	
  	private static CommonParameter commonParameter = (CommonParameter) ApplicationContextHelper.getBean("commonParameter");

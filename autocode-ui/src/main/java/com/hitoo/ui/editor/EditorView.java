@@ -12,7 +12,6 @@ import org.eclipse.swt.widgets.Composite;
 import com.hitoo.ui.editor.java.JavaCodeEditorConfiguration;
 import com.hitoo.ui.editor.java.JavaSourceViewer;
 import com.hitoo.ui.projecttree.model.FileType;
-
 public class EditorView extends Composite{
 	private CodeDocument document ;
 	private JavaSourceViewer sourceViewer;

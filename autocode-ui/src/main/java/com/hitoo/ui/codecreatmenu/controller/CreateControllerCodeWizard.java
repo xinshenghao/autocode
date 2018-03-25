@@ -2,7 +2,7 @@ package com.hitoo.ui.codecreatmenu.controller;
 
 import org.eclipse.jface.wizard.Wizard;
 
-import com.hitoo.config.ConfigFilePath;
+import com.hitoo.config.FilePathBean;
 import com.hitoo.config.createcode.AbsCodeCreater;
 import com.hitoo.config.createcode.controller.ControllerCodeCreater;
 import com.hitoo.config.createcode.service.ServiceCodeCreater;
@@ -31,7 +31,7 @@ public class CreateControllerCodeWizard extends Wizard {
 		String[] domains = selectDomainPage.getSelectedDomains();
 		String templateName = selectControTemplatePage.getTemplatePath();
 		
-		String outputPath = ConfigFilePath.PROJECT_PATH+"/tmp/controller";
+		String outputPath = FilePathBean.getProjectPath()+"autocode-ui/tmp/controller";
 		codeCreater = new ControllerCodeCreater(templateName, outputPath);
 		codeCreater.createCodes(domains);
 		

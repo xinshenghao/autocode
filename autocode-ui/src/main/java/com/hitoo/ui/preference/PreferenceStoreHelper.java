@@ -4,11 +4,12 @@ import java.io.IOException;
 
 import org.eclipse.jface.preference.PreferenceStore;
 
-import com.hitoo.ui.utils.PropertiesUtil;
+import com.hitoo.config.FilePathBean;
+import com.hitoo.general.utils.PropertiesUtil;
 
 public class PreferenceStoreHelper {
 	
-	private static String preferenceStoreFilePath = PropertiesUtil.getValue(PropertiesUtil.FILE_PATH, "preferenceStore");
+	private static String preferenceStoreFilePath = FilePathBean.getPreferenceStore();
 	private static PreferenceStore preferenceStore = null;
 	/**
 	 * 是否发生了改变

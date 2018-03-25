@@ -10,7 +10,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
-import com.hitoo.ui.utils.StringUtil;
+import com.hitoo.general.utils.StringUtil;
 /**
  * 填写代码内容
  * @author xsh

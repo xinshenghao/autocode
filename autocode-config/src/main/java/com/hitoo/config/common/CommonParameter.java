@@ -9,6 +9,7 @@ import org.dom4j.Element;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import com.hitoo.config.FilePathBean;
 import com.hitoo.config.mbgconfig.MBGConfig;
 import com.hitoo.config.model.ControllerTemplate;
 import com.hitoo.config.model.DBConnection;
@@ -37,7 +38,7 @@ public class CommonParameter {
 	private XmlUtil xmlUtil = null;
 	
 	public CommonParameter() {
-		xmlUtil = new XmlUtil(CommParaKey.COMMENT_PARAMTER_XML_PATH);
+		xmlUtil = new XmlUtil(FilePathBean.getCommonParameter());
 		xmlTrains2Bean();
 	}
 	

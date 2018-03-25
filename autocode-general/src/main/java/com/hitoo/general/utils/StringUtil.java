@@ -1,4 +1,4 @@
-package com.hitoo.ui.utils;
+package com.hitoo.general.utils;
 
 public class StringUtil {
 
