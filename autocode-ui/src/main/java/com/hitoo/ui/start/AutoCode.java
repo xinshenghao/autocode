@@ -22,6 +22,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.TabFolder;
 import org.eclipse.swt.widgets.TabItem;
+import org.eclipse.ui.internal.menus.MenuHelper;
 
 import com.hitoo.config.FilePathBean;
 import com.hitoo.config.common.CommonParameter;
@@ -71,6 +72,8 @@ public class AutoCode extends ApplicationWindow {
  	private static final String IMG_PROJECT = "project";
  	
  	private static CommonParameter commonParameter = (CommonParameter) ApplicationContextHelper.getBean("commonParameter");
+ 	
+ 	private static MenuMangerHelper menuMangerHelper = new MenuMangerHelper(commonParameter);
 	
 	/**
 	 * Create the application window.
@@ -174,150 +177,26 @@ public class AutoCode extends ApplicationWindow {
 	 */
 	@Override
 	protected MenuManager createMenuManager() {
-		MenuManager menuManager = new MenuManager();
-		//文件
-		MenuManager fileMenu=new MenuManager("文件");
-		//文件--新建
-		MenuManager createProjectMenu=new MenuManager("新建");
-		CreateEclipseProjectAction createEclipseProjectAction = new CreateEclipseProjectAction();
-		createProjectMenu.add(createEclipseProjectAction);
-		fileMenu.add(createProjectMenu);
-		//文件--导出
-		MenuManager exportProjectMenu=new MenuManager("导出");
-		ExportToEclipseWorkSpaceAction exportToEclipseWorkSpaceAction = new ExportToEclipseWorkSpaceAction();
-		exportProjectMenu.add(exportToEclipseWorkSpaceAction);
-		fileMenu.add(exportProjectMenu);
-		//文件--首选项
-		PreferenceAction preferenceAction = new PreferenceAction();
-		fileMenu.add(preferenceAction);
-		//文件--退出
-		fileMenu.add(exitAction);
-		menuManager.add(fileMenu);
-		//数据库菜单
-		MenuManager dbMenu = createDBMenu();
-		menuManager.add(dbMenu);
-		//Dao层代码生成
-		MenuManager createDaoCodeMenu=createDaoCodeMenu( );
-		menuManager.add(createDaoCodeMenu);
-		//公共代码管理
-		MenuManager codeManagerMenu = createCodeManagerMenu();
-		menuManager.add(codeManagerMenu);
-		//其他层代码生成
-		MenuManager createCodeMangerMenu = createMenu();
-		menuManager.add(createCodeMangerMenu);
-		
-		
-		return menuManager;
+		return menuMangerHelper.createMenuBar();
 	}
-	private MenuManager createMenu() {
-		MenuManager createCodeMangerMenu = new MenuManager("业务代码生成");
-		
-		//生成Service层代码
-		CreateServiceCodeAction createServiceCodeAction = new CreateServiceCodeAction();
-		createCodeMangerMenu.add(createServiceCodeAction);
-		//生成Controller层代码
-		CreateControllerCodeAction createControllerCodeAction = new CreateControllerCodeAction();
-		createCodeMangerMenu.add(createControllerCodeAction);
-		return createCodeMangerMenu;
-	}
-	/**
-	 * 公共代码管理菜单项
-	 * @return
-	 */
-	private MenuManager createCodeManagerMenu() {
-		MenuManager codeManagerMenu = new MenuManager("公共代码");
-		//公共代码--搜索
-		SearchCodeAction searchCodeAction = new SearchCodeAction();
-		codeManagerMenu.add(searchCodeAction);
-		//公共代码－－上传代码
-		UploadCodeAction uploadCodeAction = new UploadCodeAction();
-		codeManagerMenu.add(uploadCodeAction);
-		//公共代码－－私有代码管理
-		PrivateCodeManagerAction privateCodeManagerAction = new PrivateCodeManagerAction();
-		codeManagerMenu.add(privateCodeManagerAction);
-		return codeManagerMenu;
-	}
-	/**
-	 * Dao层代码生成菜单项
-	 * @return
-	 */
-	private MenuManager createDaoCodeMenu() {
-		//dao层代码生成
-		MenuManager createDaoCodeMenu = new MenuManager("Dao层代码生成");
-		//dao层代码生成---环境配置
-		mbgConfigManagerMenu = new MenuManager("环境配置");
-		initCreateDaoCodeMenu();
-		createDaoCodeMenu.add(mbgConfigManagerMenu);
-		//dao层代码生产---表生成策略管理
-		mbgTableConfManagerMenu = new MenuManager("表生成策略");
-		initTableConfigeMenu();
-		createDaoCodeMenu.add(mbgTableConfManagerMenu);
-		//dao层代码生成---代码生成
-		createDaoCodeMenu.add(new DaoCodeCreaterAction());
-		return createDaoCodeMenu;
-	}
+	
 	/**
 	 * 初始化Dao层代码表格配置管理菜单
 	 */
 	public static void initTableConfigeMenu() {
-		mbgTableConfManagerMenu.removeAll();
-		List<TableConfig> tableConfigs = commonParameter.getTableConfigs();
-		if(tableConfigs!=null && tableConfigs.size()!=0) {
-			for (TableConfig tableConfig : tableConfigs) {
-				mbgTableConfManagerMenu.add(new TableConfigInforAction(tableConfig));				
-			}
-		}
-		mbgTableConfManagerMenu.add(new Separator());
-		mbgTableConfManagerMenu.add(new TableConfigManagerAction());
+		menuMangerHelper.initTableConfigeMenu();
 	}
 	/**
 	 * 初始化Dao层代码生成环境配置管理菜单
 	 */
 	public static void initCreateDaoCodeMenu() {
-		mbgConfigManagerMenu.removeAll();
-		List<MBGConfig> mbgConfigs = commonParameter.getMbgConfigs();
-		if(mbgConfigs!=null && mbgConfigs.size()!=0) {
-			for (MBGConfig mbgConfig : mbgConfigs) {
-				mbgConfigManagerMenu.add(new MBGConfigInforAction(mbgConfig));
-			}
-		}
-		mbgConfigManagerMenu.add(new Separator());
-		mbgConfigManagerMenu.add(new MBGConfigManagerAction());
+		menuMangerHelper.initCreateDaoCodeMenu();
 	}
-	/**
-	 * 数据库菜单项
-	 * @return
-	 */
-	private MenuManager createDBMenu() {
-		//数据库
-		MenuManager dbMenu=new MenuManager("数据库");
-		//数据库--创建数据库
-		CreateDBAction createDBAction = new CreateDBAction();
-		dbMenu.add(createDBAction);
-		//数据库--打开数据库
-		OpenDBAction openDBAction = new OpenDBAction();
-		dbMenu.add(openDBAction);
-		//数据库--数据库连接菜单
-		connDBMenu = new MenuManager("数据库连接");
-		//获取现有的数据库菜单
-		initConnDBMenu();
-		dbMenu.add(connDBMenu);
-		return dbMenu;
-	}
-
 	/**
 	 * 初始化数据库连接管理子菜单
 	 */
 	public static void initConnDBMenu() {
-		connDBMenu.removeAll();
-		List<DBConnection> connections = commonParameter.getDbConnections();
-		if(connections != null && connections.size() != 0) {
-			for (DBConnection dbConnection : connections) {
-				connDBMenu.add(new ConnDBInforAction(dbConnection));
-			}
-		}
-		connDBMenu.add(new Separator());
-		connDBMenu.add(new DBConnManagerAction());
+		menuMangerHelper.initConnDBMenu();
 	}
 
 	/**

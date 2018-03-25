@@ -26,6 +26,8 @@ public class DaoCodeCreaterAction extends Action {
 			boolean isCreate =MessageDialog.openQuestion(AutoCode.getApp().getShell(), "警告", "没有指定要生成实体的数据库名，是否立刻指定？");
 			if(isCreate) {
 				new OpenDBAction().run();
+			}else {
+				return ;
 			}
 		}
 		//打开选项
