@@ -8,17 +8,15 @@ public class FileTypeRule implements ScannerRuleI{
 	};
 	
 	private Type type;
-	private String folderPath;
 	
 	
-	public FileTypeRule(String folderPath, Type type) {
-		this.folderPath = folderPath;
+	public FileTypeRule(Type type) {
 		this.type = type;
 	}
 
 	@Override
-	public boolean accept(String name) {
-		File file = new File(folderPath+"/"+name);
+	public boolean accept(String path) {
+		File file = new File(path);
 		if(this.type.equals(Type.FILE)) {
 			return file.isFile();
 		}else {
