@@ -1,5 +1,6 @@
 package com.hitoo.config.createcode;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StringWriter;
@@ -9,6 +10,8 @@ import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
+
+import com.hitoo.config.FilePathBean;
 
 public class VelocityHelper {
 	
@@ -20,8 +23,8 @@ public class VelocityHelper {
 	
 	public VelocityHelper() {
 		
-		ve.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath");
-		ve.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
+		ve.setProperty("resource.loader", "file");
+		ve.setProperty("file.resource.loader.class", "org.apache.velocity.runtime.resource.loader.FileResourceLoader");
 		ve.init();
 		
 		context = new VelocityContext();
@@ -47,14 +50,20 @@ public class VelocityHelper {
 	 * 输出合并数据后的模板文件
 	 * @param filePath
 	 */
-	public void outputMegerFile(String filePath) {
+	public void outputMegerFile(String filePath, String fileName) {
 		if( null == this.templateFilePath) {
 			throw new RuntimeException("请设置模板文件位置");
 		}
+		
+		File file = new File(filePath);
+		if(!file.exists() || file.isDirectory()) {
+			file.mkdirs();
+		}
+		
 		Template template = ve.getTemplate(templateFilePath);
 		FileWriter fw = null;
 		try {
-			fw = new FileWriter(filePath);
+			fw = new FileWriter(filePath+"/"+fileName);
 			template.merge(context, fw);
 		} catch (IOException e) {
 			e.printStackTrace();

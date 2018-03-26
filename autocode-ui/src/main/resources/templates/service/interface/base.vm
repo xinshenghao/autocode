@@ -1,6 +1,4 @@
-import org.springframework.stereotype.Service;
 
-@Service("${name}")
-public class base {
-	private sfdss ${name};
+public interface ${name} {
+	
 }

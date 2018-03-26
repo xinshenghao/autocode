@@ -2,13 +2,14 @@ package com.hitoo.ui.codecreatmenu.service;
 
 import org.eclipse.jface.wizard.Wizard;
 
-import com.hitoo.config.ConfigFilePath;
-import com.hitoo.config.createcode.service.ServiceCodeCreate;
+import com.hitoo.config.FilePathBean;
+import com.hitoo.config.createcode.service.ServiceCodeCreater;
+import com.hitoo.ui.codecreatmenu.SelectDomainPage;
 
 public class CreateServiceCodeWizard extends Wizard {
 	private SelectDomainPage selectDomainPage;
 	private SelectTemplatePage selectTemplatePage;
-	private ServiceCodeCreate serviceCodeCreate;
+	private ServiceCodeCreater serviceCodeCreater;
 
 	public CreateServiceCodeWizard() {
 		setWindowTitle("Service层代码生成");
@@ -34,15 +35,10 @@ public class CreateServiceCodeWizard extends Wizard {
 	public boolean performFinish() {
 		String[] domains = selectDomainPage.getSelectedDomains();
 		String templateName = selectTemplatePage.getTemplatePath();
-		boolean isCreateInter = selectTemplatePage.getIsCreateInterface();
-		System.out.println(isCreateInter);
 		
-		
-		
-		
-		String outputPath = "/home/xsh/tmp/";
-		serviceCodeCreate = new ServiceCodeCreate(templateName, outputPath, isCreateInter);
-		serviceCodeCreate.createCodes(domains);
+		String outputPath = FilePathBean.getProjectPath()+"/autocode-ui/tmp/service/";
+		serviceCodeCreater = new ServiceCodeCreater(templateName, outputPath);
+		serviceCodeCreater.createCodes(domains);
 		
 		return true;
 	}

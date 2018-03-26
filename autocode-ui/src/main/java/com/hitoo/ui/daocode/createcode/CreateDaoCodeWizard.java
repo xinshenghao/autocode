@@ -22,6 +22,7 @@ import org.mybatis.generator.exception.InvalidConfigurationException;
 import org.mybatis.generator.exception.XMLParserException;
 import org.mybatis.generator.internal.DefaultShellCallback;
 
+import com.hitoo.config.FilePathBean;
 import com.hitoo.config.common.CommonParameter;
 import com.hitoo.config.mbgconfig.MBGConfig;
 import com.hitoo.config.mbgconfig.MBGConfigFileKey;
@@ -31,11 +32,11 @@ import com.hitoo.config.model.TableConfig;
 import com.hitoo.config.projectconfig.SpringProjectConfigFileOperationer;
 import com.hitoo.config.projectinfor.ProjectInfor;
 import com.hitoo.config.utils.XmlUtil;
+import com.hitoo.general.utils.FileUtil;
+import com.hitoo.general.utils.PropertiesUtil;
 import com.hitoo.ui.start.ApplicationContextHelper;
 import com.hitoo.ui.start.AutoCode;
 import com.hitoo.ui.start.RuntimeParamter;
-import com.hitoo.ui.utils.FileUtil;
-import com.hitoo.ui.utils.PropertiesUtil;
 
 public class CreateDaoCodeWizard extends Wizard {
 	
@@ -164,7 +165,7 @@ public class CreateDaoCodeWizard extends Wizard {
 	 * 复制代码到项目中
 	 */
 	private void copeFile() {
-		XmlUtil xml = new XmlUtil("tmp/generatorConfig.xml");
+		XmlUtil xml = new XmlUtil(FilePathBean.getMbgConfigFileTmp());
 		Element context = xml.getRootElement().element(MBGConfigFileKey.ELE_CONTEXT);
 		
 		String domain = context.element(MBGConfigFileKey.ELE_JAVAMODELGENERATOR).attribute(MBGConfigFileKey.ATTR_TARGETPACKAGE).getText();
@@ -230,11 +231,11 @@ public class CreateDaoCodeWizard extends Wizard {
 	 * @param tableConfig 
 	 */
 	private void createMBGConfigFile(MBGConfig mbgConfig, TableConfig tableConfig, DBConnection dbConnection, String dataBaseName, List<String> selectedTables) {
-		String configFilePath = PropertiesUtil.getValue(PropertiesUtil.FILE_PATH, "mbgConfigFile")+"/"+mbgConfig.getPath();
+		String configFilePath = FilePathBean.getMbgConfigFile()+"/"+mbgConfig.getPath();
 		MBGConfigOperationer mbgConfigOperationer = new MBGConfigOperationer(configFilePath);
 		mbgConfigOperationer.addJdbcConnectionElement(dbConnection,dataBaseName);
 		mbgConfigOperationer.addTableElement(selectedTables, tableConfig);
-		String tmpConfigFilePath = PropertiesUtil.getValue(PropertiesUtil.FILE_PATH, "mbgConfigFileTmp");
+		String tmpConfigFilePath = FilePathBean.getMbgConfigFileTmp();
 		mbgConfigOperationer.writeToFile(tmpConfigFilePath);
 	}
 
@@ -242,7 +243,8 @@ public class CreateDaoCodeWizard extends Wizard {
 	 * 生成代码
 	 */
 	private void createDaoCode() {
-		String configFilePath = PropertiesUtil.getValue(PropertiesUtil.FILE_PATH, "mbgConfigFileTmp");
+		//String configFilePath = PropertiesUtil.getValue(ConfigFilePath.FILEPATH_PROPERTIES_FILE_PATH, "mbgConfigFileTmp");
+		String configFilePath = FilePathBean.getMbgConfigFileTmp();
 		try {
 			List<String> warnings = new ArrayList<String>();
 			boolean overwrite = true;

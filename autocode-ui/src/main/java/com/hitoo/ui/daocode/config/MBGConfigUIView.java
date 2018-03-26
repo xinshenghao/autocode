@@ -30,15 +30,16 @@ import org.mybatis.generator.config.JavaClientGeneratorConfiguration;
 import org.mybatis.generator.config.JavaModelGeneratorConfiguration;
 import org.mybatis.generator.config.SqlMapGeneratorConfiguration;
 
+import com.hitoo.config.FilePathBean;
 import com.hitoo.config.common.CommParaBeanOperationer;
 import com.hitoo.config.common.CommonParamterOperationer;
 import com.hitoo.config.mbgconfig.MBGConfig;
 import com.hitoo.config.mbgconfig.MBGConfigBeanOperationer;
 import com.hitoo.config.model.MBGContext;
+import com.hitoo.general.utils.FileUtil;
+import com.hitoo.general.utils.PropertiesUtil;
 import com.hitoo.ui.start.ApplicationContextHelper;
 import com.hitoo.ui.start.AutoCode;
-import com.hitoo.ui.utils.FileUtil;
-import com.hitoo.ui.utils.PropertiesUtil;
 
 public class MBGConfigUIView extends Composite {
 
@@ -82,9 +83,11 @@ public class MBGConfigUIView extends Composite {
 			monitor.worked(10);
 			String filePath = null;
 			if(null == mbgConfig) {
-				filePath =  PropertiesUtil.getValue(PropertiesUtil.FILE_PATH, "mbgCommonConfigFile");				
+				//filePath =  PropertiesUtil.getValue(PropertiesUtil.FILE_PATH, "mbgCommonConfigFile");				
+				filePath = FilePathBean.getMbgCommonConfigFile();
 			}else {
-				filePath = PropertiesUtil.getValue(PropertiesUtil.FILE_PATH, "mbgConfigFile")+"/"+mbgConfig.getPath();
+				//filePath = PropertiesUtil.getValue(PropertiesUtil.FILE_PATH, "mbgConfigFile")+"/"+mbgConfig.getPath();
+				filePath = FilePathBean.getMbgConfigFile()+"/"+mbgConfig.getPath();
 			}
 			
 			if(filePath==null) {
@@ -439,7 +442,7 @@ public class MBGConfigUIView extends Composite {
 		CommParaBeanOperationer commParaBeanOperationer = (CommParaBeanOperationer) ApplicationContextHelper.getBean("commParaBeanOperationer");
 		//获取文件名
 		String nameS = name.getText(); 
-		String path = PropertiesUtil.getValue(PropertiesUtil.FILE_PATH, "mbgConfigFile")+"/"+nameS+".xml";
+		String path = FilePathBean.getMbgConfigFile()+"/"+nameS+".xml";
 		//如果是修改，先删除原来的文件
 		if(null != mbgConfig) {
 			commonParamterOperationer.deleteMBGConfig(mbgConfig);
@@ -471,7 +474,7 @@ public class MBGConfigUIView extends Composite {
 		}else {
 			boolean b = MessageDialog.openConfirm(Display.getCurrent().getActiveShell(), "确认", "是否删除"+mbgConfig.getPath()+"配置文件");
 			if(b) {
-				String path = PropertiesUtil.getValue(PropertiesUtil.FILE_PATH, "mbgConfigFile")+"/"+mbgConfig.getPath();
+				String path = FilePathBean.getMbgConfigFile()+"/"+mbgConfig.getPath();
 				//删除文件
 				FileUtil.deleteFile(path);
 				//删除持久化容器中的实体

@@ -4,12 +4,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.jface.preference.PreferenceStore;
+
+import com.hitoo.config.FilePathBean;
+import com.hitoo.general.utils.PropertiesUtil;
 import com.hitoo.server.client.codemanger.busniess.ElasticSearchRequest;
 import com.hitoo.server.client.response.AbsResponseBean;
 import com.hitoo.server.client.response.ResponseType;
 import com.hitoo.ui.preference.PreferenceStoreHelper;
 import com.hitoo.ui.preference.PreferenceStoreKey;
-import com.hitoo.ui.utils.PropertiesUtil;
 import com.hitoo.ui.widget.MessageUtil;
 
 /**
@@ -20,7 +22,7 @@ import com.hitoo.ui.widget.MessageUtil;
 public class RuntimeParamter {
 	
 	private static final String LOGIN = "/user/login.do";
-	private String url = PropertiesUtil.getValue(PropertiesUtil.CLIENT_PARAMTER_PATH, "es.requestURL");
+	private String url = PropertiesUtil.getValue(FilePathBean.getClientParamterFilePath(), "es.requestURL");
 	private ElasticSearchRequest request;
 	
 	//选中的数据库
@@ -48,7 +50,7 @@ public class RuntimeParamter {
 		PreferenceStore preferenceStore = PreferenceStoreHelper.getPreferenceStore();
 		String userName = preferenceStore.getString(PreferenceStoreKey.CODEMANAGER_USERNAME);
 		String password = preferenceStore.getString(PreferenceStoreKey.CODEMANAGER_PASSWD);
-		String url = PropertiesUtil.getValue(PropertiesUtil.CLIENT_PARAMTER_PATH, "es.requestURL");
+		String url = PropertiesUtil.getValue(FilePathBean.getClientParamterFilePath(), "es.requestURL");
 		
 		Map<String, String> paramter = new HashMap<>();
 		paramter.put("userName", userName);

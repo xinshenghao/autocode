@@ -13,7 +13,8 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
-import com.hitoo.ui.utils.StringUtil;
+import com.hitoo.general.utils.StringUtil;
+
 import org.eclipse.swt.widgets.Combo;
 
 public class WriteCodeInforWizardPage extends WizardPage {

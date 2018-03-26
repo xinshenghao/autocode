@@ -7,15 +7,14 @@ import java.util.Map;
 
 import org.eclipse.jface.action.Action
 ;
-import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.preference.PreferenceStore;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.custom.CTabItem;
 import org.eclipse.swt.widgets.Display;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
+import com.hitoo.config.FilePathBean;
+import com.hitoo.general.utils.PropertiesUtil;
 import com.hitoo.server.client.codemanger.busniess.ElasticSearchRequest;
 import com.hitoo.server.client.codemanger.domain.PrivateMethod;
 import com.hitoo.server.client.response.AbsResponseBean;
@@ -23,7 +22,6 @@ import com.hitoo.server.client.response.ResponseType;
 import com.hitoo.ui.start.ApplicationContextHelper;
 import com.hitoo.ui.start.AutoCode;
 import com.hitoo.ui.start.RuntimeParamter;
-import com.hitoo.ui.utils.PropertiesUtil;
 import com.hitoo.ui.widget.MessageUtil;
 
 public class PrivateCodeManagerAction extends Action {
@@ -32,7 +30,7 @@ public class PrivateCodeManagerAction extends Action {
 	
 	private RuntimeParamter runtimeParamter = (RuntimeParamter) ApplicationContextHelper.getBean("runtimeParamter"); 
 	
-	private String url = PropertiesUtil.getValue(PropertiesUtil.CLIENT_PARAMTER_PATH, "es.requestURL");
+	private String url = PropertiesUtil.getValue(FilePathBean.getClientParamterFilePath(), "es.requestURL");
 	private ElasticSearchRequest elasticSearchRequest;
 	
 	String userId = null;

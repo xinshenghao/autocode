@@ -16,15 +16,6 @@ public abstract class AbsCodeCreater {
 		this.outputPath = outputPath;
 		this.velocityHelper = new VelocityHelper();
 	}
-	public abstract void createCode(String domain) ;
 	
-	public abstract void setTemplatePath( );
-	
-	public void createCodes(String[] domains) {
-		setTemplatePath();
-		for (String domain : domains) {
-			createCode(domain);
-		}
-	}
-
+	public abstract void createCodes(String[] domains);
 }

@@ -1,6 +1,5 @@
 package com.hitoo.config.common;
 
-import com.hitoo.config.ConfigFilePath;
 
 /**
  * commonParameter.xml文件中的key类
@@ -9,8 +8,6 @@ import com.hitoo.config.ConfigFilePath;
  *
  */
 public abstract class CommParaKey {
-	/*******common_parameter.xml文件存放位置*********/
-	public static String COMMENT_PARAMTER_XML_PATH = ConfigFilePath.COMMON_PARAMETER_FILE_PATH;	
 	/*******工作区域*********/
 	public static String WORKSPACE = "workspace";
 	public static String DEFAUL = "default" ;
@@ -52,6 +49,7 @@ public abstract class CommParaKey {
 	public static final String TEMPLATE_SELECT = "select";
 	public static final String TEMPLATE_PATH = "path";
 
+	public static final String CONTROLLER_TEMPLATES = "controller_templates";
 	/****************/
 	/****************/
 			

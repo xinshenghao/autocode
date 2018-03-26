@@ -13,7 +13,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Link;
 import org.eclipse.swt.widgets.Text;
 
-import com.hitoo.ui.utils.BrowseUtil;
+import com.hitoo.general.utils.BrowseUtil;
 
 public class importZipFileWizardPage extends WizardPage {
 	private Text filePathText;

@@ -21,8 +21,8 @@ import org.eclipse.swt.widgets.Text;
 import com.hitoo.config.common.CommParaBeanOperationer;
 import com.hitoo.config.common.CommonParamterOperationer;
 import com.hitoo.config.model.TableConfig;
+import com.hitoo.general.utils.StringUtil;
 import com.hitoo.ui.start.ApplicationContextHelper;
-import com.hitoo.ui.utils.StringUtil;
 import com.hitoo.ui.widget.MessageUtil;
 /**
  * 表格生成策略内容

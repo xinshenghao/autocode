@@ -8,7 +8,7 @@ import com.hitoo.config.common.CommonParameter;
 import com.hitoo.config.pom.Pom;
 import com.hitoo.config.projectconfig.SpringProjectConfigFileOperationer;
 import com.hitoo.config.projectinfor.ProjectInfor;
-import com.hitoo.ui.utils.PropertiesUtil;
+import com.hitoo.general.utils.PropertiesUtil;
 
 public class SpringStartedListener{
 

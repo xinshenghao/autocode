@@ -23,15 +23,16 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 
+import com.hitoo.config.FilePathBean;
+import com.hitoo.general.utils.PropertiesUtil;
+import com.hitoo.general.utils.StringUtil;
 import com.hitoo.server.client.codemanger.busniess.ElasticSearchRequest;
 import com.hitoo.server.client.codemanger.domain.PrivateMethod;
-import com.hitoo.ui.utils.PropertiesUtil;
-import com.hitoo.ui.utils.StringUtil;
 import com.hitoo.ui.widget.MessageUtil;
 
 public class PrivateCodeManagerComposite extends Composite {
 	
-	private String url = PropertiesUtil.getValue(PropertiesUtil.CLIENT_PARAMTER_PATH, "es.requestURL");
+	private String url = PropertiesUtil.getValue(FilePathBean.getClientParamterFilePath(), "es.requestURL");
 	private static final String REQUEST_DELETE = "privateMethodCode/deletePrivateMethod.do";
 	private static final String REQUEST_UPDATE = "privateMethodCode/updatePrivateMethod.do";
 	private ElasticSearchRequest elasticSearchRequest;

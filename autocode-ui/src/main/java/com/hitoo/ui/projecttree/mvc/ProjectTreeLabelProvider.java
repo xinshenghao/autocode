@@ -7,12 +7,12 @@ import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
 
+import com.hitoo.config.FilePathBean;
 import com.hitoo.ui.projecttree.model.ProjectTreeElement;
-import com.hitoo.ui.utils.PropertiesUtil;
 
 public class ProjectTreeLabelProvider implements ILabelProvider{
 	
-	private String imgsFolderPath = PropertiesUtil.getValue(PropertiesUtil.FILE_PATH, "imgsFolder");
+	private String imgsFolderPath = FilePathBean.getImgsFolder();
 	public static final String IMG_FOLDER = "folder";
 	public static final String IMG_FILE = "file";
 	public static final String IMG_SPRINGBOOT_APPLI = "springboot_appli";

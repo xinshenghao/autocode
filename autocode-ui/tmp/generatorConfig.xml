@@ -10,7 +10,7 @@
     <property name="javaFileEncoding" value="UTF-8"/>
     <property name="beginningDelimiter" value="`"/>
     <property name="endingDelimiter" value="`"/>
-    <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/study" userId="root" password="root"/>
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/autoCode" userId="root" password="root"/>
     <javaTypeResolver>
       <property name="forceBigDecimals" value="false"/>
     </javaTypeResolver>
@@ -27,6 +27,8 @@
     <javaClientGenerator type="XMLMAPPER" targetPackage="mybatis.idao" targetProject="tmp">
       <property name="enableSubPackages" value="true"/>
     </javaClientGenerator>
+    <table tableName="private_method" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true" enableUpdateByExample="true"/>
+    <table tableName="public_method" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true" enableUpdateByExample="true"/>
     <table tableName="user" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true" enableUpdateByExample="true"/>
   </context>
 </generatorConfiguration>

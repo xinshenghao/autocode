@@ -1,26 +1,20 @@
 package com.hitoo.ui.codecreatmenu.service;
 
-import java.awt.FlowLayout;
-
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.List;
 
 import com.hitoo.config.common.CommonParameter;
 import com.hitoo.config.model.ServiceTemplate;
 import com.hitoo.ui.start.ApplicationContextHelper;
-import org.eclipse.swt.layout.RowLayout;
 
 public class SelectTemplatePage extends WizardPage {
 	private List list;
 	private java.util.List<ServiceTemplate> templates;
-	private Button isCreateInterBtn;
 	/**
 	 * Create the wizard.
 	 */
@@ -47,16 +41,6 @@ public class SelectTemplatePage extends WizardPage {
 		Label lblNewLabel = new Label(container, SWT.NONE);
 		lblNewLabel.setText("是否生成接口文件");
 		
-		Group group = new Group(container, SWT.NONE);
-		group.setLayout(new RowLayout());
-		
-		isCreateInterBtn = new Button(group, SWT.RADIO);
-		isCreateInterBtn.setText("是");
-		
-		Button btnRadioButton_1 = new Button(group, SWT.RADIO);
-		btnRadioButton_1.setText("否");
-		
-		
 		list = new List(container, SWT.SINGLE);
 		GridData data = new GridData(GridData.FILL_BOTH);
 		data.horizontalSpan = 2;
@@ -76,14 +60,6 @@ public class SelectTemplatePage extends WizardPage {
 				}
 			}
 		}
-	}
-	
-	/**
-	 * 获取是否创建接口
-	 * @return
-	 */
-	public boolean getIsCreateInterface() {
-		return isCreateInterBtn.getSelection();
 	}
 	
 	/**
